@@ -1,0 +1,13 @@
+@use 'variables' as v;
+
+body {
+    font-family: v.$font-main;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.contenedor {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+

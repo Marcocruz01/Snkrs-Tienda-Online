@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <meta name="description" content="Tienda online especializada en calzado. Descubre y compra los mejores productos de zapatos con nuestro carrito de compras fácil de usar. Vive una experiencia de compra cómoda, segura y rápida.">
+    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="public/dist/css/index.css">
+    <title >Snkrs | Tienda</title>
+</head>
+<body>
+
+    <!-- Header de la tienda-->
+    <nav class="w-full fixed z-20 top-0 left-0 right-0 bg-white px-2" id="navbar">
+        <div class="mx-auto max-w-7xl">
+            <!-- Contenedor menu y barra busqueda -->
+            <div class="flex h-16 items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <a href="/" class="flex items-center gap-2">
+                        <picture class="shrink-0 z-10">
+                            <source srcset="public/dist/img/logotipo-tienda.webp" type="image/webp">
+                            <source srcset="public/dist/img/logotipo-tienda.jpg" type="image/jpg">
+                            <img src="public/dist/img/logotipo-tienda.png" alt="Logo Snkrz" class="h-8 rounded-lg w-auto" loading="lazy">
+                        </picture>
+                        <h1 class="font-bold text-xl md:text-lg">Snkrs</h1>
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <!-- Links / Enlaces -->
+                    <div class="ml-10 items-baseline space-x-2 hidden lg:flex">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <a href="#" class="rounded-md px-3 py-2 text-sm font-normal text-zinc-400 hover:text-zinc-800 transition-all duration-300 ease-in-out">Inicio</a>
+                        <a href="#" aria-current="page" class="rounded-md px-3 py-2 text-sm font-bold text-zinc-800">Tienda</a>
+                        <a href="#" class="rounded-md px-3 py-2 text-sm font-normal text-zinc-400 hover:text-zinc-800 transition-all duration-300 ease-in-out">Acerca de</a>
+                        <a href="#" class="rounded-md px-3 py-2 text-sm font-normal text-zinc-400 hover:text-zinc-800 transition-all duration-300 ease-in-out">Soporte</a>
+                        <a href="#" class="rounded-md px-3 py-2 text-sm font-normal text-zinc-400 hover:text-zinc-800 transition-all duration-300 ease-in-out">Contacto</a>
+                    </div>
+
+                    <!-- Menu para ver el carrito -->
+                    <div class="flex items-center gap-2">
+                        <div class="flow-root p-2">
+                            <!-- Boton para abrir el checkout del carrito -->
+                            <button type="button" id="abrir-checkout" class="group -m-2 flex items-center p-2">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-7 md:size-5 shrink-0 text-gray-400 group-hover:text-gray-500">
+                                    <path d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <span id="contador-productos" class="ml-2 text-sm font-medium text-gray-500 group-hover:text-gray-800 w-1">0</span>
+                                <span class="sr-only">Artículos en el carrito, ver bolsa</span>
+                            </button>        
+                        </div>
+
+                        <!-- Drawer lateral del carrito -->
+                        <div id="drawer" aria-labelledby="drawer-title" class="fixed inset-0 z-50 max-h-none max-w-none overflow-hidden bg-transparent transition-opacity duration-500 opacity-0 w-0">
+                            <!-- Backdrop overlay -->
+                            <div id="backdrop-panel" class="absolute inset-0 bg-zinc-700/75 transition-opacity duration-500 ease-in-out opacity-0 w-0"></div>
+
+                            <div id="panel" class="absolute inset-0 pl-10 z-50 focus:outline-none sm:pl-16 transition-transform duration-500 ease-in-out translate-x-[450px]">
+
+                                <div class="ml-auto block size-full max-w-md transform transition duration-500 ease-in-out data-closed:translate-x-full sm:duration-700">
+                                    <div id="contenedor-dos-columnas" class="flex h-full flex-col overflow-y-auto bg-white shadow-xl">
+                                        <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                                            <div class="flex items-start justify-between">
+                                                <h2 id="drawer-titulo" class="text-lg font-medium text-gray-900">Tus productos agregados</h2>
+                                                <div class="ml-3 flex h-7 items-center">
+                                                    <button type="button" id="cerrar-checkout" class="relative -m-2 p-2 text-gray-400 hover:text-gray-500">
+                                                        <span class="absolute -inset-0.5"></span>
+                                                        <span class="sr-only">Close panel</span>
+                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
+                                                            <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="mt-6 md:mt-8">
+                                                <div class="flow-root" id="contenido-panel"></div>
+                                            </div>
+                                        </div>
+
+                                        <div id="contenido-pago" class="border-t border-gray-200 px-4 py-6 sm:px-6">
+                                            <div class="flex justify-between text-base font-medium text-gray-900 mb-3">
+                                                <p class="text-xl font-bold">Resumen del pedido</p>
+                                            </div>
+                                            <div class="flex justify-between text-base font-medium text-gray-900">
+                                                <p id="cantidad-productos"></p>
+                                                <p id="subtotal-precio">$0.00</p>
+                                            </div>
+                                            <div class="flex justify-between text-sm text-gray-600 mt-1">
+                                                <p class="">Entrega</p>
+                                                <p class="">Gratis</p>
+                                            </div>
+                                            <div class="flex justify-between text-base font-bold text-gray-800 mt-2">
+                                                <p>Total</p>
+                                                <p id="total-precio">$0.00</p>
+                                            </div>
+                                            <p class="mt-0.5 text-sm text-gray-500">(IVA del 16% aplicada al total del pedido.)</p>
+                                            <div class="mt-6">
+                                                <button type="button" class="flex items-center justify-center w-full rounded-md border border-transparent bg-zinc-950 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-zinc-800">Realizar compra</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Perfil menu dropdown -->
+                        <div class="relative" id="dropdownWrapper">
+                            <div class="flex items-center justify-center gap-2 group p-1">
+                                <button id="userDropdownBtn" class="relative flex max-w-xs items-center rounded-full gap-2 text-sm focus:outline-none">
+                                    <span class="sr-only">Abrir menu de usuario</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7 md:size-5 shrink-0 text-gray-500 group-hover:text-gray-800">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 md:size-3 hidden md:block text-gray-500 group-hover:text-gray-800">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Menú oculto por defecto -->
+                            <div id="userDropdownMenu" class="absolute -right-12 md:right-0 mt-2 w-56 origin-top-right top-8 rounded-xl bg-white py-1 shadow-lg ring-1 ring-black/5 hidden transition">
+                                <div class="flex flex-col items-start w-full gap-2 p-2 border-b border-gray-200">
+                                    <a href="#" class="w-full flex items-center gap-2 p-2 text-sm text-zinc-950 font-bold hover:bg-gray-100 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                        </svg>
+                                        <span class="">Mi cuenta</span>
+                                    </a>
+                                    <a href="#" class="w-full flex items-center gap-2 p-2 text-sm text-zinc-950 font-bold hover:bg-gray-100 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                                        </svg>
+
+                                        <span class="">Comunidad</span>
+                                    </a>
+                                    <a href="#" class="w-full flex items-center justify-between gap-2 p-2 text-sm text-zinc-950 font-bold hover:bg-gray-100 rounded-lg">
+                                        <div class="flex items-center gap-2 justify-between">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+                                            </svg>
+                                            <span class="">Membresía</span>
+                                        </div>
+                                        <span class="flex items-center gap-1 bg-red-600/20 py-0.5 px-1 uppercase text-xs rounded-lg border border-red-500/50">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-3">
+                                                <path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule="evenodd" />
+                                            </svg>
+                                            pro
+                                        </span>
+                                    </a>
+                                    <a href="#" class="w-full flex items-center gap-2 p-2 text-sm text-zinc-950 font-bold hover:bg-gray-100 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        </svg>
+                                        <span class="">Configuración</span>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col items-start w-full gap-2 p-2">
+                                    <a href="#" class="w-full flex items-center gap-2 p-2 text-sm text-zinc-950 font-bold hover:bg-stone-100 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+                                        </svg>
+                                        <span class="">Centro de atención</span>
+                                    </a>
+                                    <a href="#" class="w-full flex items-center gap-2 p-2 text-sm text-zinc-950 font-bold hover:bg-stone-100 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                                        </svg>
+
+                                        <span class="">Cerrar sesión</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Boton para abrir menu lateral mobile -->
+                        <button type="button" class="block lg:hidden p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="size-8 text-zinc-600">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+   <div class="mx-2 mt-28">
+        <header class="w-full relative contenedor h-[400px] md:h-[500px] bg-cover bg-center rounded-xl mt-2 md:mt-5 shadow-lg" style="background-image: url(/public/dist/img/header-foto.webp);">
+            <!-- Overlay oscuro -->
+            <div class="absolute inset-0 bg-black/50 rounded-xl"></div>
+
+            <!-- Cotenenido -->
+            <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6">
+                <h1 class="text-3xl md:text-5xl mb-5 font-bold">Tenis y accesorios de alto rendieminto</h1>
+                <p class="text-sm w-auto md:w-[500px] text-gray-200 mb-5">
+                    Nuestra colección de tenis y accesorios combina tecnología, comodidad y estilo 
+                    para ofrecerte el mejor rendimiento y comodidad en tu cuerpo.
+                </p>
+                <div class="flex items-center gap-4">
+                    <a href="" class="p-3 rounded-lg border font-semibold text-sm bg-zinc-950 text-white border-zinc-950 hover:bg-zinc-900 hover:border-zinc-900 transition-all duration-100 ease-in-out">Explorar catalogo</a>
+                    <a href="" class="p-3 rounded-lg border font-semibold text-sm hover:bg-white hover:text-zinc-950 transition-all duration-100 ease-in-out">Sobre nosotros</a>
+                </div>
+            </div>
+        </header>
+   </div>
+
+    <!-- Main -->
+    <main class="w-full m-auto max-w-7xl mt-10 md:mt-16">
+        <div class="mx-2">
+            <h2 class="text-2xl font-bold">Tienda</h2>
+            <!-- Filtros de productos -->
+            <div class="flex items-center gap-3 mt-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                <div id="filtros" class="inline-flex gap-3 py-4">
+                    <button type="button" id="todos" data-filtro="todos" class="btn-filtro text-sm px-3 py-2 border rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold">Todos</button>
+                    <button type="button" id="deportivo" data-filtro="deportivo" class="btn-filtro text-sm px-3 py-2 border rounded-xl hover:bg-gray-50 transition-all duration-100 ease-in-out">Deportivo</button>
+                    <button type="button" id="sneakers" data-filtro="sneakers" class="btn-filtro text-sm px-3 py-2 border rounded-xl hover:bg-gray-50 transition-all duration-100 ease-in-out">Sneakers</button>
+                    <button type="button" id="running" data-filtro="running" class="btn-filtro text-sm px-3 py-2 border rounded-xl hover:bg-gray-50 transition-all duration-100 ease-in-out">Running</button>
+                    <button type="button" id="jordan" data-filtro="jordan" class="btn-filtro text-sm px-3 py-2 border rounded-xl hover:bg-gray-50 transition-all duration-100 ease-in-out">Jordan</button>
+                </div>
+            </div>
+            <!-- Contenedor de los productos -->
+            <div id="contenedor-productos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-6 mt-8 pb-5"></div> 
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="px-2 md:px-6 py-6 mt-10 border border-gray-200">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center justify-between max-w-7xl mx-auto">
+            <!-- Logo y texto -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-3">
+                        <a href="/" class="flex items-center gap-2">
+                            <picture class="shrink-0">
+                                <source srcset="public/dist/img/logotipo-tienda.webp" type="image/webp">
+                                <source srcset="public/dist/img/logotipo-tienda.jpg" type="image/jpg">
+                                <img src="public/dist/img/logotipo-tienda.png" alt="Logo Snkrz" class="h-8 w-8 rounded-lg" loading="lazy">
+                            </picture>
+                            <h1 class="font-bold text-lg text-zinc-950">Snkrs</h1>
+                        </a>
+                    </div>
+                </div>
+                <!-- Texto informativo -->
+                <p class="text-sm max-w-xs">
+                    <p class="font-bold text-zinc-950">Impulsamos tu estilo y rendimiento con cada paso.</p>
+                    <span class="text-gray-500 text-sm">Conectamos calidad, diseño y comodidad para que encuentres el par perfecto.</span>
+                </p>
+                <!-- Links de redes sociales-->
+                <div class="flex gap-4 mt-4">
+                    <a href="#" aria-label="link de red social facebook">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="link de red social instagram">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path fill="currentColor" fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="link de red social twitter">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11.705 11.705 0 0 1 3.4 4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 6.1 13.635a4.192 4.192 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 2 18.184 11.732 11.732 0 0 0 8.291 20 11.502 11.502 0 0 0 19.964 8.5c0-.177 0-.349-.012-.523A8.143 8.143 0 0 0 22 5.892Z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="link de red social x">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="link de red social youtube">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Columnas -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+                <div>
+                    <h3 class="text-zinc-950 font-semibold mb-4">Soluciones</h3>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-gray-800">Marketing</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Analytics</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Automatización</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Comercio</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Insights</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-zinc-950 font-semibold mb-4">Soporte</h3>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-gray-800">Enviar ticket</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Documentación</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Guías</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-zinc-950 font-semibold mb-4">Compañía</h3>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-gray-800">Nosotros</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Blog</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Empleos</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Prensa</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-zinc-950 font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-gray-800">Términos de servicio</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Política de privacidad</a></li>
+                        <li><a href="#" class="hover:text-gray-800">Licencias</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-200 mt-10 pt-6 text-sm text-center text-gray-500">
+            © 2025 Snkrz Cruz. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script src="/public/dist/js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> 
+</body>
+</html>

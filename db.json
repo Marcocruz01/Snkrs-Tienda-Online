@@ -1,0 +1,84 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Nike Air Max Dn",
+      "precio": 1959,
+      "categoria": "deportivo",
+      "descripcion": "Los Air Max Dn cuentan con un sistema de unidades Dynamic Air de tubos de presión dual que crea una sensación de rebote.",
+      "imagen": "airmax-dn.jpg"
+    },
+    {
+      "id": 2,
+      "nombre": "Air Jordan 1 Mid",
+      "precio": 3199,
+      "categoria": "jordan",
+      "descripcion": "Esta edición de corte mid mantiene el look icónico que te encanta, y los colores selectos y el cuero impecable le dan una identidad distintiva.",
+      "imagen": "air-jordan-mid.webp"
+    },
+    {
+      "id": 3,
+      "nombre": "Nike Zegama 2",
+      "precio": 4199,
+      "categoria": "running",
+      "descripcion": "Equipados con una entresuela de espuma ZoomX Foam ultrarresponsiva, están diseñados para tu comoidad",
+      "imagen": "nike-zoommx-zegama-trail-2.webp"
+    },
+    {
+      "id": 4,
+      "nombre": "Air Jordan 1 Mid SE",
+      "precio": 3399,
+      "categoria": "jordan",
+      "descripcion": "Da un paso hacia la grandeza con los AJ1. Esta edición especial está confeccionada con cuero de calidad y cuenta con una amortiguación",
+      "imagen": "air-jordar-1-mid-se.webp"
+    },
+    {
+      "id": 5,
+      "nombre": "Nike Winflo 11",
+      "precio": 2499,
+      "categoria": "running",
+      "descripcion": "Disfruta del retorno de energía con la combinación de espuma Cushlon 3.0 Foam y una unidad Nike Air completa en la entresuela",
+      "imagen": "nike-air-winflo-11.webp"
+    },
+    {
+      "id": 6,
+      "nombre": "PSG Air Max Plus Prm",
+      "precio": 1249,
+      "categoria": "sneakers",
+      "descripcion": "Deja que tu actitud marque la diferencia con esta edición PSG de los Air Max Plus.",
+      "imagen": "nike-air-max-plus-prm.webp"
+    },
+    {
+      "id": 7,
+      "nombre": "Nike Air Force 1 '07",
+      "precio": 2599,
+      "categoria": "sneakers",
+      "descripcion": "Cómodos, duraderos y atemporales: por una razón son los número 1. La confección clásica de los años 80.",
+      "imagen": "air-force-1-07.webp"
+    },
+    {
+      "id": 8,
+      "nombre": "Giannis Immortality 4",
+      "precio": 2399,
+      "categoria": "sneakers",
+      "descripcion": "Los Giannis Immortality 4 son para los jugadores multifacéticos. La elegante y firme forma del talón se combina con un patrón.",
+      "imagen": "giannis-immortality-4.webp"
+    },
+    {
+      "id": 9,
+      "nombre": "Nike WearAllDay",
+      "precio": 1799,
+      "categoria": "deportivo",
+      "descripcion": "Con un acolchado suave alrededor del tobillo, una lengüeta suave y gruesa y espuma increíblemente suave en la planta del pie.",
+      "imagen": "nike-wearallday.webp"
+    },
+    {
+      "id": 10,
+      "nombre": "Nike Run Defy",
+      "precio": 1499,
+      "categoria": "running",
+      "descripcion": "Corre bajo tus propias reglas con los nuevos Nike Defy. La entresuela de espuma, la parte superior transpirable y la tracción confiable.",
+      "imagen": "nike-run-defy.webp"
+    }
+  ]
+}
