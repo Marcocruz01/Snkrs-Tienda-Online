@@ -3,6 +3,9 @@
 Snkrs es una tienda online especializada en calzado deportivo y sneakers.  
 Este proyecto está construido con **HTML5, Tailwind CSS y JavaScript**, ofreciendo una experiencia de compra moderna, responsiva y con un carrito de compras dinámico.  
 
+![imagen de la tienda](/public/dist/img/Snkrs.png)
+![imagen de la tienda](/public/dist/img/tienda.png)
+
 ---
 
 ## 🚀 Características principales  
@@ -21,7 +24,7 @@ Este proyecto está construido con **HTML5, Tailwind CSS y JavaScript**, ofrecie
 
 ## ⚙️ Tecnologías utilizadas
 
-- ##HTML5## – Estructura semántica.
-- ##CSS3 (Tailwind CSS)## – Estilos responsivos y modernos.
-- ##JavaScript (ES6 Modules)## – Interactividad del carrito y filtros.
-- ##Google Fonts## – Tipografía Manrope.
+- **HTML5** – Estructura semántica.
+- **CSS3 (Tailwind CSS)** – Estilos responsivos y modernos.
+- **JavaScript (ES6 Modules)** – Interactividad del carrito y filtros.
+- **Google Fonts** – Tipografía Manrope.
