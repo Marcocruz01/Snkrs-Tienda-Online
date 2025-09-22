@@ -4,7 +4,7 @@ Snkrs es una tienda online especializada en calzado deportivo y sneakers.
 Este proyecto está construido con HTML5, Tailwind CSS y JavaScript, ofreciendo una experiencia de compra moderna, responsiva y con un carrito de compras dinámico.
 Donde el usuario podrá agregar artículos al carrito y en el carrito podrá ver el precio final, podrá aumentar la cantidad del artículo o eliminarlo del carrito de compras.  
 
---
+---
 
 ## 📸 Vista previa
 ![imagen de la tienda](/public/dist/img/Snkrs.png)
