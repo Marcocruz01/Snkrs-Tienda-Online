@@ -1,8 +1,9 @@
-# 🏪 Snkrs - Tienda Online  
+# ![Captura de la app](public/dist/img/logotipo-tienda.webp) Snkrs - Tienda Online  
 
 Snkrs es una tienda online especializada en calzado deportivo y sneakers.  
 Este proyecto está construido con **HTML5, Tailwind CSS y JavaScript**, ofreciendo una experiencia de compra moderna, responsiva y con un carrito de compras dinámico.  
 
+## 📸 Vista previa
 ![imagen de la tienda](/public/dist/img/Snkrs.png)
 ![imagen de la tienda](/public/dist/img/tienda.png)
 
